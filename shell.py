@@ -1,4 +1,11 @@
 #!/usr/bin/python
+# 
+# Copyright 2008 Jerry He
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 #
 # Copyright 2007 Google Inc.
 #
@@ -203,7 +210,7 @@ class StatementHandler(webapp.RequestHandler):
     self.response.headers['Content-Type'] = 'text/plain'
 
     me = users.get_current_user()
-    if not (unicode(me) in [u"rebound1618", u"enkasa", u"test@example.com"]):
+    if not (unicode(me) in [u"google_user1", u"google_user2", u"test@example.com"]):
         self.response.out.write("You are not an Aministrator of this shell platform!!!")
         return
     # extract the statement to be run
