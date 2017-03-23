@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title> Quiz Time!!! </title>
+<style type="text/css">
+
+img {
+   vertical-align: middle;
+}
+
+#flashcard {
+    margin-left: 0.8em;
+    margin-right: 0.8em;
+}
+
+#q {
+color:#0000CC
+}
+
+#a {
+color:#00FF00
+}
+
+div.display{
+	border: 2px solid #003B62;
+	font-family: verdana;
+	background-color: #B5CFE0;
+	padding: 7px;
+	margin: 5px;
+}
+
+</style>
+
+<script type="text/javascript">
+
+questions = new Array();
+answers = new Array();
+
+{% for card in cards %}
+questions.push(" {{ card.display.question }} ");
+answers.push(" {{card.display.answer}} ");
+{% endfor %}
+
+function showCard(i) {
+    qout = document.getElementById("qout");
+    qout.innerHTML=questions[i];
+    aout = document.getElementById("aout");
+    aout.innerHTML=answers[i];
+}
+
+</script>
+
+</head>
+
+
+<body onload="showCard(0)">
+ 
+<h1 align=center onclick="showCard(3)"> Flash Cards</h1>
+
+
+<div align=center>
+<span class="flashcard">
+<p> <span class="user"> {% firstof card.user "unregistered" %} </span> 
+<h2 id="q" onclick="showCard(0)"> Question </h2>
+<p id="qout">
+</p> <br>
+<h2 id="a"> Answer </h2>
+<p id="aout">
+</p><br>
+<hr> </p>
+</span>
+</div>
+
+<div class='display'>
+<script TYPE="text/javascript">
+function changeText2(){
+	var userInput = document.getElementById('userInput').value;
+	document.getElementById('boldStuff2').innerHTML = userInput;
+}
+</script>
+<p>Welcome to the site <b ID="boldStuff2">dude</b> </p> 
+<INPUT  TYPE="text" ID="userInput" VALUE="Enter Text Here"/>
+
+<INPUT  TYPE="button" ONCLICK="changeText2()" VALUE="Change Text"/>
+</div>
+
+</body>
+</html>

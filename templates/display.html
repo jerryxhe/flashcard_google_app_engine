@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title> Jerry's FlashCard Knowledge Base </title>
+<style type="text/css">
+
+img {
+   font: 1em;
+}
+
+#flashcard {
+    margin-left: 0.8em;
+    margin-right: 0.8em;
+}
+
+#q {
+color:#0000CC
+}
+
+#a {
+color:#00FF00
+}
+
+</style>
+</head>
+
+<body>
+
+<h1 align=center> Flash Cards</h1>
+
+{% for card in cards %}
+<div align=center>
+<span class="flashcard">
+<p> <span class="user"> {% firstof card.user "unregistered" %} </span> 
+<h2 id="q"> Question </h2>
+{{ card.display.question }} <br>
+<h2 id="a"> Answer </h2>
+  {{ card.display.answer }} <br>
+{% if card.display.reference %}
+<h2 id="q"> Reference </h2>
+  {{ card.display.reference.title }} <br>
+{% endif %}
+<hr> </p>
+</span>
+</div>
+
+{% endfor %}
+
+<h1 align=center> Notes </h1>
+
+{% for note in notes %}
+<div align=center>
+<table>
+<tr>
+<td width="381">
+<p> <span class="user"> {% firstof note.user "unregistered" %} </span> 
+ {{ note.display.question }} <br>
+ <hr> </p>
+ {% endfor %}
+</td>
+</tr>
+<table>
+
+</div>
+
+</body>
+</html>

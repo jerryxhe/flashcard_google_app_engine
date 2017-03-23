@@ -1,0 +1,21 @@
+application: xxxxx
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /static
+  static_dir: static
+
+- url: /favicon\.ico
+  static_files: static/images/china.gif
+  upload: static/images/china.gif
+
+- url: /shell/
+  script: shell.py
+
+- url: /shell\.do
+  script: shell.py
+
+- url: .*
+  script: main.py

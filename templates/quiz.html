@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title> Quiz Time!!! </title>
+<style type="text/css">
+
+img {
+   vertical-align: middle
+   width:inherit
+   height:inherit
+}
+
+#q {
+color:#0000CC
+}
+
+#a {
+color:#00FF00
+}
+
+span.card {
+    display:none
+}
+
+</style>
+
+<script type="text/javascript">
+
+var past = 0;
+var q = null;
+var a = null;
+var ques = null;
+var ans = null;
+
+function showCard(i) 
+{
+    if (!q) {  q = document.getElementsByName("q"); }
+    if (!ques) { ques = document.getElementById("question"); }
+    if (!ans) { ans = document.getElementById("answer"); }
+    ques.innerHTML=q[i].innerHTML;
+    ans.innerHTML="";
+    past = i;
+}
+
+function displayAnswer()
+{ 
+    if (!ans) { ans = document.getElementById("answer"); }
+    if (!a) { a = document.getElementsByName("a"); }
+    ans.innerHTML = a[past].innerHTML;
+}
+
+</script>
+</head>
+
+
+<body onload="showCard(past)">
+ 
+<h1 align=center onclick="showCard(past+1)" style="font-size:24px"> Flash Cards</h1>
+
+<div align=center style="font-size:24px">
+<p> {% firstof card.user "unregistered" %} </p>
+<h2 id="q"> Question </h2>
+<p id="question"> </p>
+<br>
+<h2 id="a" onclick="displayAnswer()"> Answer </h2>
+<p id="answer"> </p>
+<hr>
+</div>
+
+
+
+
+{% for card in cards %}
+<span class="card" name="q">
+{{ card.display.question }}
+</span> <br>
+<span class="card" name="a">
+{{ card.display.answer }}
+</span>
+{% endfor %}
+
+
+</body>
+</html>

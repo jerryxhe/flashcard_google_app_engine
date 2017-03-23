@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<style type="text/css">
+#toolbar {
+  margin-left: 0.5em;
+  padding-left: 0.5em;
+}
+</style>
+</head>
+
+<div align=center>
+<form method="POST" action="/post/">
+
+<table>
+{{ form }}
+<tr><td> <input type="submit"> </td></tr>
+</table>
+</form>
+
+<p id="toolbar">
+{% if user %}
+  <span class="username">{{ user.nickname }}</span>
+  (<a href="{{ logout_url }}">log out</a>)
+{% else %}
+  <a href="{{ login_url }}">log in</a>
+{% endif %}
+</p>
+</div>
+</html>

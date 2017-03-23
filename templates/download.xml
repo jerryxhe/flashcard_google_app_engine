@@ -1,0 +1,17 @@
+<xml>
+
+{% for xmlcard in xmlcards %}
+    {{ xmlcard }}
+{% endfor %}
+
+{% for xmlnote in xmlnotes %}
+    {{ xmlnote }}
+{% endfor %}
+
+{% for xmlref in xmlrefs %}
+    {{ xmlref }}
+{% endfor %}
+
+
+
+</xml>
